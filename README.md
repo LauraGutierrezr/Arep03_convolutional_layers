@@ -102,6 +102,28 @@ Students must choose one existing public dataset suitable for convolutional neur
 4. Preprocessing requirements (normalization, resizing)
 5. Examples of samples from each class (visualized)
 
+
+### Images Notebook
+
+# Estructure
+
+The CNN model was trained in SageMaker using a PyTorch Estimator and a custom training script. The trained model was saved to S3 and automatically packaged by SageMaker. After successful training, the model was deployed to a real-time endpoint and tested with a CIFAR-10 formatted input. The endpoint returned a valid class prediction, confirming correct deployment.
+
+
+<img width="335" height="233" alt="Captura" src="https://github.com/user-attachments/assets/ac0fe947-4d15-4e04-a1ef-9cd730f67467" />
+
+
+# Creation endpoints successfully
+
+<img width="1059" height="223" alt="Captura" src="https://github.com/user-attachments/assets/7962996d-52bc-45c7-9697-f14e31b9b707" />
+
+
+<img width="668" height="557" alt="Captura" src="https://github.com/user-attachments/assets/9e820c4d-fbbe-4686-91ce-cf2e10c7eeef" />
+
+
+<img width="689" height="721" alt="Captura" src="https://github.com/user-attachments/assets/95abe118-602e-44ab-974b-4a790fe2cc9e" />
+
+
 ### This Lab: CIFAR-10
 
 In this repository we use **CIFAR-10** as the dataset:
