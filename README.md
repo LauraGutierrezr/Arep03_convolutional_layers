@@ -306,7 +306,7 @@ Output: Class prediction + confidence probability
 | **CNN Architecture Design & Justification** | 25 | Intentional design choices; explicit reasoning for all hyperparameters |
 | **Experimental Rigor** | 25 | Controlled experiments; quantitative results; reproducibility |
 | **Interpretation & Clarity** | 20 | Deep reasoning about inductive bias and design trade-offs |
-| **Bonus: Visualization** | +5 | Learned filters, feature maps, or other insightful visualizations |
+| **Bonus: Visualization** | + | Learned filters, feature maps, or other insightful visualizations |
 
 ---
 
