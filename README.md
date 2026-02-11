@@ -1,8 +1,8 @@
 # Convolutional Neural Networks: Architecture Design & Experimental Analysis
 
-This project implements **convolutional neural networks from first principles** to understand architectural design choices, inductive bias, and empirical performance trade-offs. Rather than treating neural networks as black boxes, this assignment focuses on intentional architectural decisions: kernel sizes, filter depths, stride, and padding—and their measurable impact on learning.
+This project implements **convolutional neural networks** to understand architectural design choices, inductive bias, and empirical performance trade-offs. Rather than treating neural networks as black boxes, this assignment focuses on intentional architectural decisions: kernel sizes, filter depths, stride, and padding — and their measurable impact on learning.
 
-The project follows a structured approach: dataset exploration, baseline model development, CNN architecture design with explicit justification, controlled experiments on convolutional components, rigorous interpretation of results, and deployment in AWS SageMaker for inference.
+The concrete implementation in this repository is a small CNN for **CIFAR-10** built with TensorFlow/Keras in the notebook `convolutional_layers.ipynb`. It includes dataset exploration, a fully connected baseline, a CNN with 3×3 kernels, a controlled experiment on kernel size (3×3 vs 5×5), interpretation of results, and brief deployment notes for AWS SageMaker.
 
 ## Learning Objectives
 
@@ -28,16 +28,16 @@ You need the following software installed:
 - Jupyter Notebook or Jupyter Lab
 - Git (for version control)
 
-#### Allowed Python Libraries
+#### Main Python Libraries Used
 
 ```
 numpy          # Numerical computation
-pandas         # Data manipulation and loading
 matplotlib     # Visualization
 jupyter        # Interactive notebook environment
+tensorflow     # CNN models (Keras API)
 ```
 
-**Important:** High-level machine learning libraries (scikit-learn, TensorFlow, PyTorch, Keras) are **not used** for model training. Convolutional layers, activation functions, and optimization routines are implemented using NumPy.
+In this lab we use TensorFlow/Keras to focus on **architectural design and experimental analysis**, rather than on low-level implementation of convolution and optimization in pure NumPy.
 
 ### Installation
 
@@ -68,7 +68,7 @@ jupyter notebook
 
 5. **Open the main notebook:**
 
-Open `cnn_analysis.ipynb` and run all cells sequentially.
+Open `convolutional_layers.ipynb` and run all cells sequentially.
 
 ## Dataset Selection & Justification
 
@@ -101,6 +101,28 @@ Students must choose one existing public dataset suitable for convolutional neur
 3. Image dimensions and number of channels
 4. Preprocessing requirements (normalization, resizing)
 5. Examples of samples from each class (visualized)
+
+### This Lab: CIFAR-10
+
+In this repository we use **CIFAR-10** as the dataset:
+
+- 50,000 training images and 10,000 test images
+- 10 classes of small natural images (e.g., airplane, dog, truck)
+- Image shape 32×32 with 3 RGB channels
+- Simple preprocessing: convert to `float32` and normalize pixel values to the range [0, 1]
+
+This dataset is well suited for convolutional architectures because it consists of small images where **local patterns** (edges, corners, textures) are important for classification.
+
+## Notebook Structure and Figures
+
+The main analysis is in `convolutional_layers.ipynb` and generates several figures saved under the `images/` folder:
+
+- `images/cifar10.png`: One example image per class in CIFAR-10. This gives an intuitive visual overview of what the model must learn to distinguish.
+- `images/cifar10_dims.png`: Histograms of image width and height (all images are 32×32). This confirms the spatial resolution is fixed and suitable for a small CNN.
+- `images/cifar10_preprocessing.png`: Shows an original image, its normalized version, and the pixel value distribution after normalization. This illustrates the basic preprocessing used before training.
+- `images/baseline_performance.png`: Training and validation accuracy/loss curves for the fully connected (non-convolutional) baseline model.
+- `images/cnn_performance.png`: Training and validation accuracy/loss curves for the CNN with 3×3 kernels, which typically outperforms the baseline.
+- `images/kernel_size_comparison.png`: Validation accuracy and loss curves comparing two CNNs that differ only in the first kernel size (3×3 vs 5×5). This supports the controlled experiment on kernel size.
 
 ## Validation & Testing
 
@@ -259,7 +281,6 @@ Output: Class prediction + confidence probability
 ## Deliverables Checklist
 
 - [ ] **Git repository** (if applicable) with clean commit history
-- [ ] **Jupyter Notebook** (`cnn_analysis.ipynb` or similar)
   - [ ] EDA section with visualizations
   - [ ] Baseline MLP implementation
   - [ ] CNN architecture with explicit design justification
@@ -297,10 +318,6 @@ Output: Class prediction + confidence probability
 * Matplotlib – Data visualization and analysis
 * Jupyter Notebook – Interactive development and documentation
 * AWS SageMaker Studio – Cloud training and inference endpoint deployment
-
-## Contributing
-
-This project is developed for academic purposes at a university course. External contributions are not expected at this stage.
 
 ## Authors
 
